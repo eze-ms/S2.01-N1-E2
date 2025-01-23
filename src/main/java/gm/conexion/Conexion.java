@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class Conexion {
     public static Connection getConexion() {
         Connection conexion = null;
-        var baseDatos = "pizzeria_db";
+        var baseDatos = "pizzeria_db_2";
         var url = "jdbc:mysql://localhost:3306/" + baseDatos;
         var usuario = "root";
         var password = "luyluna79";

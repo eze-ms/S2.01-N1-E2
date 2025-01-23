@@ -1,0 +1,1 @@
+SELECT id, name, recommended FROM Client;

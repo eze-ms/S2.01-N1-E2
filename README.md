@@ -1,52 +1,62 @@
-# Pizzería - Gestión de Base de Datos
+# Pizzería - Gestión de Base de Datos 🍕
 
 ## 📄 Descripción
 Este proyecto implementa un sistema de gestión para una pizzería, con funcionalidades de pedidos, productos y categorías. Utiliza Java para conectar con una base de datos MySQL, crear tablas e interactuar con los datos almacenados.
 
-### Características
-1. **Conexión a la base de datos:**
-    - Clase `Conexion` para gestionar la conexión a MySQL.
-2. **Creación de tablas:**
-    - Clase `CreateTables` para crear las siguientes tablas:
-        - Provincia
-        - Localitat
-        - Direccion
-        - Cliente
-        - Tienda
-        - Empleado
-        - Producto
-        - Categoria
-        - Orden
-        - Orden_Producto
-3. **Relaciones complejas:**
-    - Soporta relaciones entre tablas como:
-        - Localidades y provincias.
-        - Tiendas y direcciones.
-        - Clientes y órdenes.
-        - Productos y categorías.
-        - Órdenes y empleados.
-4. **Operaciones avanzadas:**
-    - Diseño optimizado para futuras consultas, como ventas por localidad o órdenes por empleado.
+---
+
+## ✨ Características
+
+### **Conexión a la base de datos**
+- Clase `Conexion` para gestionar la conexión a MySQL.
+
+### **Creación de tablas**
+- Clase `CreateTables` para crear las siguientes tablas:
+   - `Provincia`
+   - `Localitat`
+   - `Direccion`
+   - `Cliente`
+   - `Tienda`
+   - `Empleado`
+   - `Producto`
+   - `Categoria`
+   - `Orden`
+   - `Orden_Producto`
+
+### **Relaciones complejas**
+- Soporta relaciones entre tablas como:
+   - Localidades y provincias.
+   - Tiendas y direcciones.
+   - Clientes y órdenes.
+   - Productos y categorías (solo para pizzas).
+   - Órdenes y empleados (repartidores).
+
+### **Operaciones avanzadas**
+- Diseño optimizado para futuras consultas, como:
+   - Ventas por localidad.
+   - Órdenes por empleado.
+   - Historial de categorías de pizzas.
 
 ---
 
 ## 💻 Tecnologías Utilizadas
 - **Java 17**
 - **MySQL**
-- **IDE recomendado:** IntelliJ IDEA.
+- **IDE recomendado**: IntelliJ IDEA.
 
 ---
 
 ## 📊 Requisitos
-- **Java Development Kit (JDK):** Versión 17 o superior.
-- **MySQL:** Servidor en funcionamiento con permisos de escritura.
+- **Java Development Kit (JDK)**: Versión 17 o superior.
+- **MySQL**: Servidor en funcionamiento con permisos de escritura.
 
 ---
 
 ## 🛠️ Instalación
+
 1. Clona este repositorio:
    ```bash
-   git https://github.com/eze-ms/S2.01-N1-E2
+   git clone https://github.com/eze-ms/S2.01-N1-E2
    ```
 2. Configura la base de datos:
     - Crea una base de datos llamada `pizzeria_db`.

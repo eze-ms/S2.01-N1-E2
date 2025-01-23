@@ -33,22 +33,23 @@ public class CreateTables {
                 "FOREIGN KEY (localidad_id) REFERENCES Localitat(id)" +
                 ") ENGINE = InnoDB;";
 
+        String Categoria = "CREATE TABLE IF NOT EXISTS Categoria (" +
+                "id INT PRIMARY KEY AUTO_INCREMENT, " +
+                "nombre VARCHAR(100) NOT NULL, " +
+                "valido_desde DATE NOT NULL, " +
+                "valido_hasta DATE DEFAULT NULL" +
+                ") ENGINE = InnoDB;";
+
         String Producto = "CREATE TABLE IF NOT EXISTS Producto (" +
                 "id INT PRIMARY KEY AUTO_INCREMENT, " +
                 "nombre VARCHAR(45) NOT NULL, " +
                 "descripcion TEXT, " +
                 "imagen VARCHAR(255), " +
                 "precio DECIMAL(10, 2) NOT NULL, " +
+                "tipo_producto ENUM('pizza', 'hamburguesa', 'bebida') NOT NULL, " +
                 "categoria_id INT DEFAULT NULL, " +
                 "FOREIGN KEY (categoria_id) REFERENCES Categoria(id)" +
                 ") ENGINE = InnoDB;";
-
-
-        String Categoria = "CREATE TABLE IF NOT EXISTS Categoria (" +
-                "id INT PRIMARY KEY AUTO_INCREMENT, " +
-                "nombre VARCHAR(100) NOT NULL" +
-                ") ENGINE = InnoDB;";
-
 
         String Cliente = "CREATE TABLE IF NOT EXISTS Cliente (" +
                 "id INT PRIMARY KEY AUTO_INCREMENT, " +
@@ -80,19 +81,21 @@ public class CreateTables {
                 "id INT PRIMARY KEY AUTO_INCREMENT, " +
                 "cliente_id INT NOT NULL, " +
                 "tienda_id INT NOT NULL, " +
-                "rol_id INT, " +
+                "empleado_id INT, " +
                 "fecha_hora DATETIME NOT NULL, " +
-                "tipo_entrega ENUM('domicilio', 'tienda') NOT NULL, " +
+                "tipo_entrega ENUM('domicilio', 'recogida') NOT NULL, " +
                 "precio_total DECIMAL(10, 2) NOT NULL, " +
+                "fecha_hora_entrega DATETIME, " +
                 "FOREIGN KEY (cliente_id) REFERENCES Cliente(id), " +
                 "FOREIGN KEY (tienda_id) REFERENCES Tienda(id), " +
-                "FOREIGN KEY (rol_id) REFERENCES Empleado(id)" +
+                "FOREIGN KEY (empleado_id) REFERENCES Empleado(id)" +
                 ") ENGINE = InnoDB;";
 
         String Orden_Producto = "CREATE TABLE IF NOT EXISTS Orden_Producto (" +
                 "orden_id INT NOT NULL, " +
                 "producto_id INT NOT NULL, " +
                 "cantidad INT NOT NULL, " +
+                "precio_unitario DECIMAL(10, 2) NOT NULL, " +
                 "PRIMARY KEY (orden_id, producto_id), " +
                 "FOREIGN KEY (orden_id) REFERENCES Orden(id), " +
                 "FOREIGN KEY (producto_id) REFERENCES Producto(id)" +
@@ -101,6 +104,7 @@ public class CreateTables {
         try {
             Statement statement = connection.createStatement();
 
+            // Crear tablas en el orden correcto
             statement.executeUpdate(Provincia);
             statement.executeUpdate(Localidad);
             statement.executeUpdate(Direccion);
@@ -116,7 +120,6 @@ public class CreateTables {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void main(String[] args) {
